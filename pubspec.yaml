@@ -1,6 +1,6 @@
 name: emailjs
 description: EmailJS helps sending emails using client side technologies only. No server is required.
-version: 0.0.2
+version: 0.0.3
 homepage: https://www.emailjs.com
 repository: https://github.com/emailjs-com/emailjs-flutter
 

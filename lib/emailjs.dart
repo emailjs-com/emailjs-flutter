@@ -44,7 +44,7 @@ class EmailJS {
     validateParams(pubKey, serviceID, templateID);
 
     final Map<String, dynamic> params = {
-      'lib_version': '0.0.2',
+      'lib_version': '0.0.3',
       'user_id': pubKey,
       'service_id': serviceID,
       'template_id': templateID,
