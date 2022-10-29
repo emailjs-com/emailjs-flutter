@@ -3,8 +3,8 @@ library emailjs;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import 'package:emailjs/utils/validate_params.dart';
-import 'package:emailjs/api/send_json.dart';
+import 'src/utils/validate_params.dart';
+import 'src/api/send_json.dart';
 
 class EmailJS {
   static String _publicKey = '';
