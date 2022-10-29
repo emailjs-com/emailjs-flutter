@@ -47,3 +47,19 @@ try {
   print(error.toString());
 }
 ```
+
+**init (optional)**
+```dart 
+import package:emailjs/emailjs.dart
+
+// set Public Key as global settings
+EmailJS.init('<YOUR_PUBLIC_KEY>');
+
+try {
+  // send the email without dynamic variables
+  await EmailJS.send('<YOUR_SERVICE_ID>','<YOUR_TEMPLATE_ID>');
+  print('SUCCESS!');
+} catch (error) {
+  print(error.toString());
+}
+```
