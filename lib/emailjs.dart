@@ -11,7 +11,11 @@ class EmailJS {
   static String _origin = 'api.emailjs.com';
   static http.Client _httpClient = http.Client();
 
-  static void init(String publicKey, [String? origin, http.Client? httpClient]) {
+  static void init(
+    String publicKey, [
+    String? origin,
+    http.Client? httpClient,
+  ]) {
     EmailJS._publicKey = publicKey;
     EmailJS._origin = origin ?? 'api.emailjs.com';
     EmailJS._httpClient = httpClient ?? http.Client();
