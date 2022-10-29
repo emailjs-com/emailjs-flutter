@@ -1,6 +1,7 @@
 library emailjs;
 
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 import 'package:emailjs/utils/validate_params.dart';
 import 'package:emailjs/api/send_json.dart';
@@ -8,10 +9,12 @@ import 'package:emailjs/api/send_json.dart';
 class EmailJS {
   static String _publicKey = '';
   static String _origin = 'api.emailjs.com';
+  static http.Client _httpClient = http.Client();
 
-  static void init(String publicKey, [String? origin]) {
+  static void init(String publicKey, [String? origin, http.Client? httpClient]) {
     EmailJS._publicKey = publicKey;
     EmailJS._origin = origin ?? 'api.emailjs.com';
+    EmailJS._httpClient = httpClient ?? http.Client();
   }
 
   static Future<String> send(
@@ -33,6 +36,7 @@ class EmailJS {
     };
 
     return await sendJSON(
+      EmailJS._httpClient,
       Uri.https(EmailJS._origin, 'api/v1.0/email/send'),
       json.encode(params),
     );
