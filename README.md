@@ -41,7 +41,12 @@ Map<String, dynamic> templateParams = {
 };
 
 try {
-  await EmailJS.send('<YOUR_SERVICE_ID>','<YOUR_TEMPLATE_ID>', templateParams, '<YOUR_PUBLIC_KEY>');
+  await EmailJS.send(
+    '<YOUR_SERVICE_ID>',
+    '<YOUR_TEMPLATE_ID>',
+    templateParams,
+    '<YOUR_PUBLIC_KEY>',
+  );
   print('SUCCESS!');
 } catch (error) {
   print(error.toString());
@@ -57,7 +62,10 @@ EmailJS.init('<YOUR_PUBLIC_KEY>');
 
 try {
   // send the email without dynamic variables
-  await EmailJS.send('<YOUR_SERVICE_ID>','<YOUR_TEMPLATE_ID>');
+  await EmailJS.send(
+    '<YOUR_SERVICE_ID>',
+    '<YOUR_TEMPLATE_ID>',
+  );
   print('SUCCESS!');
 } catch (error) {
   print(error.toString());
