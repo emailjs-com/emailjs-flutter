@@ -60,7 +60,9 @@ class _HomePageState extends State<HomePage> {
               'Press "Send Email" to send email',
             ),
             ElevatedButton(
-                onPressed: _sendEmail, child: const Text('Send Email')),
+              onPressed: _sendEmail,
+              child: const Text('Send Email'),
+            ),
           ],
         ),
       ),
