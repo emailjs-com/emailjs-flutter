@@ -7,10 +7,18 @@ import 'src/utils/validate_params.dart';
 import 'src/api/send_json.dart';
 
 class EmailJS {
+  /// Public Key specified in the [init] method
   static String _publicKey = '';
+
+  /// API host specified in the [init] method
   static String _origin = 'api.emailjs.com';
+
+  /// HTTP Client specified in the [init] method
   static http.Client _httpClient = http.Client();
 
+  /// Global configuration for EmailJS
+  ///
+  /// Sets globally the [publicKey] for the application
   static void init(
     String publicKey, [
     String? origin,
@@ -21,6 +29,10 @@ class EmailJS {
     EmailJS._httpClient = httpClient ?? http.Client();
   }
 
+  /// Sends the email through the [serviceID] using the ready-made [templateID].
+  ///
+  /// It's possible to pass [templatePrams] dynamic variables,
+  /// and set the [publicKey] for this call.
   static Future<String> send(
     String serviceID,
     String templateID, [
