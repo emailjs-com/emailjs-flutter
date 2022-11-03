@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
       print('SUCCESS!');
     } catch (error) {
       if (error is EmailJSResponseStatus) {
-        print('ERROR... ${error.status}: ${error.text}')
+        print('ERROR... ${error.status}: ${error.text}');
       }
       print(error.toString());
     }
