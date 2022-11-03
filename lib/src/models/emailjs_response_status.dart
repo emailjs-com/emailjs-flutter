@@ -10,4 +10,9 @@ class EmailJSResponseStatus {
     this.status = 0,
     this.text = 'Network Error',
   });
+
+  @override
+  String toString() {
+    return '[$status] $text';
+  }
 }
