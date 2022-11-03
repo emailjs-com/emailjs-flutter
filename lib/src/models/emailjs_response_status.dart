@@ -1,3 +1,4 @@
+/// Response status from EmailJS API
 class EmailJSResponseStatus {
   int status = 0;
   String text = 'Network Error';

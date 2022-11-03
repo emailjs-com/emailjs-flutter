@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:emailjs/src/models/emailjs_response_status.dart';
+import 'package:emailjs/src/types/options.dart';
 import 'package:emailjs/emailjs.dart';
 
 class MockClient extends Mock implements http.Client {}
@@ -22,7 +24,10 @@ void main() {
     });
 
     test('should send method and fail on the service ID', () {
-      EmailJS.init('LC2JWGTestKeySomething');
+      EmailJS.init(const Options(
+        publicKey: 'LC2JWGTestKeySomething',
+        privateKey: 'PrKeyTestKeySomething',
+      ));
 
       expect(
         () => EmailJS.send('', 'my_test_template'),
@@ -31,7 +36,10 @@ void main() {
     });
 
     test('should send method and fail on the template ID', () {
-      EmailJS.init('LC2JWGTestKeySomething');
+      EmailJS.init(const Options(
+        publicKey: 'LC2JWGTestKeySomething',
+        privateKey: 'PrKeyTestKeySomething',
+      ));
 
       expect(
         () => EmailJS.send('default_service', ''),
@@ -50,14 +58,22 @@ void main() {
             body: any(named: 'body'),
           )).thenAnswer((_) async => http.Response('OK', 200));
 
-      EmailJS.init('LC2JWGTestKeySomething', null, mockHttpClient);
+      EmailJS.init(
+        const Options(
+          publicKey: 'LC2JWGTestKeySomething',
+          privateKey: 'PrKeyTestKeySomething',
+        ),
+        null,
+        mockHttpClient,
+      );
 
       try {
         final result = await EmailJS.send(
           'default_service',
           'my_test_template',
         );
-        expect(result, equals('OK'));
+        expect(result.status, 200);
+        expect(result.text, 'OK');
       } catch (error) {
         expect(error, isNull);
       }
@@ -73,16 +89,25 @@ void main() {
           )).thenAnswer((_) async => http.Response('OK', 200));
 
       // pass the mock http client
-      EmailJS.init('', null, mockHttpClient);
+      EmailJS.init(
+        const Options(
+          publicKey: '',
+        ),
+        null,
+        mockHttpClient,
+      );
 
       try {
         final result = await EmailJS.send(
           'default_service',
           'my_test_template',
           null,
-          'LC2JWGTestKeySomething',
-        );
-        expect(result, equals('OK'));
+          const Options(
+            publicKey: 'LC2JWGTestKeySomething',
+            privateKey: 'PrKeyTestKeySomething',
+          ));
+        expect(result.status, 200);
+        expect(result.text, 'OK');
       } catch (error) {
         expect(error, isNull);
       }
@@ -98,7 +123,14 @@ void main() {
       )).thenAnswer((_) async => http.Response('The Public Key is required', 403));
 
       // pass the mock http client
-      EmailJS.init('LC2JWGTestKeySomething', null, mockHttpClient);
+      EmailJS.init(
+        const Options(
+          publicKey: 'LC2JWGTestKeySomething',
+          privateKey: 'PrKeyTestKeySomething',
+        ),
+        null,
+        mockHttpClient,
+      );
 
       try {
         final result = await EmailJS.send(
@@ -107,7 +139,10 @@ void main() {
         );
         expect(result, isNull);
       } catch (error) {
-        expect(error, equals('The Public Key is required'));
+        if (error is EmailJSResponseStatus) {
+          expect(error.status, 403);
+          expect(error.text, 'The Public Key is required');
+        }
       }
     });
   });

@@ -1,3 +1,4 @@
+/// Validates required params
 bool validateParams(
   String publicKey,
   String serviceID,
