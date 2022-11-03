@@ -138,8 +138,7 @@ void main() {
         expect(result, isNull);
       } catch (error) {
         if (error is EmailJSResponseStatus) {
-          expect(error.status, 403);
-          expect(error.text, 'The Public Key is required');
+          expect('$error', '[403] The Public Key is required');
         }
       }
     });
