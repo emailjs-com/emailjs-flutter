@@ -15,8 +15,8 @@ the [REST API](https://www.emailjs.com/docs/rest-api/send/).
 
 ## Intro
 
-EmailJS helps to send emails using client-side technologies only.
-No server is required – just connect EmailJS to one of the supported
+EmailJS helps to send emails directly from your code.
+No large knowledge is required – just connect EmailJS to one of the supported
 email services, create an email template, and use our SDK
 to trigger an email.
 
