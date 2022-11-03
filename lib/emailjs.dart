@@ -6,7 +6,10 @@ import 'package:http/http.dart' as http;
 import 'src/models/emailjs_response_status.dart';
 import 'src/utils/validate_params.dart';
 import 'src/api/send_json.dart';
-import 'src/types/options.dart';
+import 'src/models/options.dart';
+
+export 'src/models/emailjs_response_status.dart';
+export 'src/models/options.dart';
 
 class EmailJS {
   /// Public Key specified in the [init] method

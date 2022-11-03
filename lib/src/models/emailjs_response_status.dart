@@ -1,10 +1,13 @@
 /// Response status from EmailJS API
 class EmailJSResponseStatus {
-  int status = 0;
-  String text = 'Network Error';
+  /// Response status code
+  final int status;
 
-  EmailJSResponseStatus(int? status, String? text) {
-    this.status = status ?? 0;
-    this.text = text ?? 'Network Error';
-  }
+  /// Response text
+  final String text;
+
+  const EmailJSResponseStatus({
+    this.status = 0,
+    this.text = 'Network Error',
+  });
 }

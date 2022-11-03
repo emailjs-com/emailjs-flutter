@@ -14,9 +14,15 @@ Future<EmailJSResponseStatus> sendJSON(
     );
 
     if (response.statusCode == 200) {
-      return EmailJSResponseStatus(response.statusCode, response.body);
+      return EmailJSResponseStatus(
+        status: response.statusCode,
+        text: response.body,
+      );
     } else {
-      throw EmailJSResponseStatus(response.statusCode, response.body);
+      throw EmailJSResponseStatus(
+        status: response.statusCode,
+        text: response.body,
+      );
     }
   } finally {
     client.close();

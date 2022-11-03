@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:emailjs/src/models/emailjs_response_status.dart';
-import 'package:emailjs/src/types/options.dart';
 import 'package:emailjs/emailjs.dart';
 
 class MockClient extends Mock implements http.Client {}
