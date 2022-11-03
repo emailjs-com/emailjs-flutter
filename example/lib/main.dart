@@ -38,10 +38,16 @@ class _HomePageState extends State<HomePage> {
           'user_email': 'hi@example.com',
           'message': 'Hi',
         },
-        '<YOUR_PUBLIC_KEY>',
+        const Options(
+          publicKey: '<YOUR_PUBLIC_KEY>',
+          privateKey: '<YOUR_PRIVATE_KEY>',
+        ),
       );
       print('SUCCESS!');
     } catch (error) {
+      if (error is EmailJSResponseStatus) {
+        print('ERROR... ${error.status}: ${error.text}')
+      }
       print(error.toString());
     }
   }

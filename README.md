@@ -45,7 +45,10 @@ try {
     '<YOUR_SERVICE_ID>',
     '<YOUR_TEMPLATE_ID>',
     templateParams,
-    '<YOUR_PUBLIC_KEY>',
+    const Options(
+      publicKey: '<YOUR_PUBLIC_KEY>',
+      privateKey: '<YOUR_PRIVATE_KEY>',
+    ),
   );
   print('SUCCESS!');
 } catch (error) {
@@ -58,7 +61,10 @@ try {
 import package:emailjs/emailjs.dart
 
 // set Public Key as global settings
-EmailJS.init('<YOUR_PUBLIC_KEY>');
+EmailJS.init(const Options(
+  publicKey: '<YOUR_PUBLIC_KEY>',
+  privateKey: '<YOUR_PRIVATE_KEY>',
+));
 
 try {
   // send the email without dynamic variables
