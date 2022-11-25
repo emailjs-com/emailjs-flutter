@@ -1,3 +1,6 @@
+## 1.1.0
+* Improve README.md
+
 ## 1.0.0
 * Add support for the private key
 * Instead of the public key argument, the settings object is passed, where the public and private keys can be set.
