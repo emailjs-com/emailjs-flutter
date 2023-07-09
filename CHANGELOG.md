@@ -1,3 +1,6 @@
+## 1.2.0
+* Update packages
+
 ## 1.1.0
 * Improve README.md
 
