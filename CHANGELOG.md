@@ -1,3 +1,6 @@
+## 1.2.1
+* Fix the environment SDK version
+
 ## 1.2.0
 * Update packages
 
