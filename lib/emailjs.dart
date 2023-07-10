@@ -22,7 +22,7 @@ class EmailJS {
   static String _host = 'api.emailjs.com';
 
   /// HTTP Client specified in the [init] method
-  static http.Client _httpClient = http.Client();
+  static http.Client? _httpClient;
 
   /// Global configuration for EmailJS
   ///
@@ -30,12 +30,12 @@ class EmailJS {
   static void init(
     Options options, [
     String? host,
-    http.Client? httpClient,
+    http.Client? customHttpClient,
   ]) {
     EmailJS._publicKey = options.publicKey;
     EmailJS._privateKey = options.privateKey;
     EmailJS._host = host ?? 'api.emailjs.com';
-    EmailJS._httpClient = httpClient ?? http.Client();
+    EmailJS._httpClient = customHttpClient;
   }
 
   /// Sends the email through the [serviceID] using the ready-made [templateID].
@@ -63,9 +63,9 @@ class EmailJS {
     };
 
     return await sendJSON(
-      EmailJS._httpClient,
       Uri.https(EmailJS._host, 'api/v1.0/email/send'),
       json.encode(params),
+      EmailJS._httpClient,
     );
   }
 }
