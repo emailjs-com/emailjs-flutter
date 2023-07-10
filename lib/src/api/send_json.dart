@@ -4,7 +4,6 @@ import '../models/emailjs_response_status.dart';
 /// sends JSON object via HTTP POST
 Future<EmailJSResponseStatus> sendJSON(
     Uri uri, String data, http.Client? customClient) async {
-  
   final client = customClient ?? http.Client();
 
   try {
