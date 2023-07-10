@@ -1,3 +1,6 @@
+## 1.3.0
+* Fix closed client (issue #1)[https://github.com/emailjs-com/emailjs-flutter/issues/1]
+
 ## 1.2.1
 * Fix the environment SDK version
 
