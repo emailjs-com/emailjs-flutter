@@ -47,7 +47,7 @@ class EmailJS {
     String templateID, [
     Map<String, dynamic>? templatePrams,
     Options? options,
-  ]) async {
+  ]) {
     final pubKey = options?.publicKey ?? EmailJS._publicKey;
     final prKey = options?.privateKey ?? EmailJS._privateKey;
 
@@ -62,7 +62,7 @@ class EmailJS {
       'template_params': templatePrams,
     };
 
-    return await sendJSON(
+    return sendJSON(
       Uri.https(EmailJS._host, 'api/v1.0/email/send'),
       json.encode(params),
       EmailJS._httpClient,
