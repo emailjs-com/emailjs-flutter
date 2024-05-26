@@ -7,6 +7,7 @@ import 'src/models/emailjs_response_status.dart';
 import 'src/utils/validate_params.dart';
 import 'src/api/send_json.dart';
 import 'src/models/options.dart';
+import 'src/store/store.dart';
 
 export 'src/models/emailjs_response_status.dart';
 export 'src/models/options.dart';
@@ -34,7 +35,7 @@ class EmailJS {
     String? host,
     http.Client? customHttpClient,
   ]) {
-    EmailJS._publicKey = options.publicKey;
+    EmailJS._publicKey = options.publicKey ?? '';
     EmailJS._privateKey = options.privateKey;
     EmailJS._host = host ?? 'api.emailjs.com';
     EmailJS._httpClient = customHttpClient;
