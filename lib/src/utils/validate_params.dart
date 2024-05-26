@@ -1,5 +1,5 @@
 /// Validates required params
-bool validateParams(
+void validateParams(
   String publicKey,
   String serviceID,
   String templateID,
@@ -15,6 +15,4 @@ bool validateParams(
   if (templateID.isEmpty) {
     throw 'The template ID is required. Visit https://dashboard.emailjs.com/admin/templates';
   }
-
-  return true;
 }
