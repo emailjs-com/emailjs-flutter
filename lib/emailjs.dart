@@ -10,6 +10,8 @@ import 'src/models/options.dart';
 
 export 'src/models/emailjs_response_status.dart';
 export 'src/models/options.dart';
+export 'src/models/block_list.dart';
+export 'src/models/limit_rate.dart';
 
 class EmailJS {
   /// Public Key specified in the [init] method
