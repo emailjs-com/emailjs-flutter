@@ -2,6 +2,7 @@ import 'package:meta/meta.dart';
 
 import 'block_list.dart';
 import 'limit_rate.dart';
+import 'storage_provider.dart';
 
 @immutable
 class Options {
@@ -20,11 +21,15 @@ class Options {
   /// Overwrite the API endpoint
   final String? origin;
 
+  /// Overwrite the storage provider
+  final StorageProvider? storageProvider;
+
   const Options({
     this.publicKey,
     this.privateKey,
     this.blockList,
     this.limitRate,
     this.origin,
+    this.storageProvider,
   });
 }
