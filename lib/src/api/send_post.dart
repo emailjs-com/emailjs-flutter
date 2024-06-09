@@ -2,16 +2,17 @@ import 'package:http/http.dart' as http;
 import '../store/store.dart';
 import '../models/emailjs_response_status.dart';
 
-/// sends JSON object via HTTP POST
+/// sends JSON object via HTTPS POST
 Future<EmailJSResponseStatus> sendPost(
-  Uri url,
+  String url,
   String data
 ) async {
-  try {
-    final client = http.Client();
+   
+  final client = http.Client();
 
+  try {
     final response = await client.post(
-      store.origin + url,
+      Uri.https(store.origin, url),
       headers: {
         'Content-Type': 'application/json',
       },
