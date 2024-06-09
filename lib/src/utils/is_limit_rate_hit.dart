@@ -7,7 +7,7 @@ Future<int> getLeftTime(
   int throttle,
   StorageProvider storage,
 ) async {
-  final int lastTime = storage.getInt(id) ?? 0;
+  final int lastTime = await storage.get(id) ?? 0;
   return throttle - DateTime.now().millisecondsSinceEpoch + lastTime;
 }
 
@@ -22,12 +22,12 @@ Future<bool> isLimitRateHit(
   validateLimitRateParams(options.throttle);
 
   final id = options.id ?? 'default';
-  final leftTime = getLeftTime(id, options.throttle);
+  final leftTime = await getLeftTime(id, options.throttle, storage);
 
   if (leftTime > 0) {
     return true;
   }
 
-  await storage.setInt(id, DateTime.now().millisecondsSinceEpoch);
+  await storage.set(id, DateTime.now().millisecondsSinceEpoch);
   return false;
 }
