@@ -14,7 +14,7 @@ import '../errors/limit_rate_error.dart';
 ///
 /// It's possible to pass [templatePrams] dynamic variables,
 /// and set the [options] for this call.
-static Future<EmailJSResponseStatus> send(
+Future<EmailJSResponseStatus> send(
   String serviceID,
   String templateID, [
   Map<String, dynamic>? templatePrams,
