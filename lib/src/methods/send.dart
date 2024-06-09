@@ -5,6 +5,7 @@ import '../api/send_post.dart';
 import '../utils/validate_params.dart';
 import '../utils/is_blocked_value_in_params.dart';
 import '../utils/is_limit_rate_hit.dart';
+import '../utils/create_default_storage.dart';
 
 import '../errors/blocked_email_error.dart';
 import '../errors/limit_rate_error.dart';
@@ -21,7 +22,7 @@ static Future<EmailJSResponseStatus> send(
 ]) async {
   final publicKey = options?.publicKey ?? store.publicKey;
   final privateKey = options?.privateKey ?? store.privateKey;
-  final storageProvider = options?.storageProvider ?? store.storageProvider;
+  final storageProvider = options?.storageProvider ?? store.storageProvider ?? createDefaultStorage();
   final blockList = { ...store.blockList, ...options.blockList };
   final limitRate = { ...store.limitRate, ...options.limitRate };
 
@@ -31,7 +32,7 @@ static Future<EmailJSResponseStatus> send(
     return Future.error(blockedEmailError());
   }
 
-  if (await isLimitRateHit(location.pathname, limitRate, storageProvider)) {
+  if (await isLimitRateHit(limitRate, storageProvider)) {
     return Future.error(limitRateError());
   }
 
@@ -44,5 +45,5 @@ static Future<EmailJSResponseStatus> send(
     'template_params': templatePrams,
   };
 
-  return sendJSON('api/v1.0/email/send', json.encode(params));
+  return sendPost('api/v1.0/email/send', json.encode(params));
 }

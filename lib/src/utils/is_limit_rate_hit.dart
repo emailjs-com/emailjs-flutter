@@ -12,7 +12,6 @@ Future<int> getLeftTime(
 }
 
 Future<bool> isLimitRateHit(
-  String defaultID,
   LimitRate options,
   StorageProvider? storage,
 ) async {
