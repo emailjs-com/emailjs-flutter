@@ -19,7 +19,10 @@ Future<EmailJSResponseStatus> sendPost(
       body: data,
     );
     
-    final responseStatus = new EmailJSResponseStatus(response.statusCode, response.body);
+    final responseStatus = new EmailJSResponseStatus(
+      status: response.statusCode,
+      text: response.body,
+    );
 
     if (response.statusCode == 200) {
       return responseStatus;
