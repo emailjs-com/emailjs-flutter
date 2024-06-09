@@ -1,6 +1,6 @@
 import '../models/emailjs_response_status.dart';
 
-void limitRateError() {
+EmailJSResponseStatus limitRateError() {
   return new EmailJSResponseStatus(
     status: 429,
     text: 'Too Many Requests',

@@ -1,6 +1,6 @@
 import '../models/emailjs_response_status.dart';
 
-void blockedEmailError() {
+EmailJSResponseStatus blockedEmailError() {
   return new EmailJSResponseStatus(
     status: 403,
     text: 'Forbidden',
