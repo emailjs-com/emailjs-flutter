@@ -1,4 +1,4 @@
-import '../modles/block_list.dart';
+import '../models/block_list.dart';
 
 bool isBlockedValueInParams(
   BlockList options,

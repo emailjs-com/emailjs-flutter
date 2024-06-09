@@ -1,5 +1,5 @@
-import '../modles/limit_rate.dart';
-import '../modles/storage_provider.dart';
+import '../models/limit_rate.dart';
+import '../models/storage_provider.dart';
 import 'validate_limit_rate_params.dart';
 
 Future<int> getLeftTime(
