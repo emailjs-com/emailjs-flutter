@@ -1,6 +1,9 @@
-import 'src/models/options.dart';
-import 'src/store/store.dart';
+import '../models/options.dart';
+import '../store/store.dart';
 
+/// Global configuration for EmailJS
+///
+/// Sets globally the EmailJS [options]
 void init(Options options) {
   store.publicKey = options.publicKey;
   store.privateKey = options.privateKey;

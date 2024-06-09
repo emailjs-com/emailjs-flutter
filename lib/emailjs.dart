@@ -8,11 +8,13 @@ import 'src/utils/validate_params.dart';
 import 'src/api/send_json.dart';
 import 'src/models/options.dart';
 import 'src/store/store.dart';
+import 'src/methods/init';
 
 export 'src/models/emailjs_response_status.dart';
 export 'src/models/options.dart';
 export 'src/models/block_list.dart';
 export 'src/models/limit_rate.dart';
+export 'src/methods/init';
 
 class EmailJS {
   /// Public Key specified in the [init] method
@@ -21,25 +23,10 @@ class EmailJS {
   /// Private Key specified in the [init] method
   static String? _privateKey;
 
-  /// API host specified in the [init] method
-  static String _host = 'api.emailjs.com';
-
-  /// HTTP Client specified in the [init] method
-  static http.Client? _httpClient;
-
   /// Global configuration for EmailJS
   ///
   /// Sets globally the EmailJS [options]
-  static void init(
-    Options options, [
-    String? host,
-    http.Client? customHttpClient,
-  ]) {
-    EmailJS._publicKey = options.publicKey ?? '';
-    EmailJS._privateKey = options.privateKey;
-    EmailJS._host = host ?? 'api.emailjs.com';
-    EmailJS._httpClient = customHttpClient;
-  }
+  static void init = init;
 
   /// Sends the email through the [serviceID] using the ready-made [templateID].
   ///
