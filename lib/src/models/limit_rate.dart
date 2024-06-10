@@ -3,10 +3,10 @@ class LimitRate {
   final String? id;
 
   /// After how many milliseconds a next request is allowed
-  final int throttle;
+  final int? throttle;
 
   const LimitRate({
     this.id,
-    required this.throttle,
+    this.throttle,
   });
 }

@@ -5,5 +5,5 @@ bool isBlockedValueInParams(
   Map<String, dynamic> params,
 ) {
     final value = params[options.watchVariable];
-    return options.list.contains(value);
+    return options.list != null && options.list!.contains(value);
 }

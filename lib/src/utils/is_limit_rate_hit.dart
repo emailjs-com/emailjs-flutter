@@ -15,14 +15,14 @@ Future<bool> isLimitRateHit(
   LimitRate options,
   StorageProvider? storage,
 ) async {
-  if (storage == null) {
+  if (storage == null || options.throttle == null || options.throttle == 0) {
     return false;
   }
 
-  validateLimitRateParams(options.throttle);
+  validateLimitRateParams(options.throttle!);
 
   final id = options.id ?? 'default';
-  final leftTime = await getLeftTime(id, options.throttle, storage);
+  final leftTime = await getLeftTime(id, options.throttle!, storage);
 
   if (leftTime > 0) {
     return true;
