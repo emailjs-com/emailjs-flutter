@@ -5,11 +5,13 @@ import '../api/send_post.dart';
 
 import '../models/emailjs_response_status.dart';
 import '../models/options.dart';
+import '../models/storage_provider.dart';
+import '../models/block_list.dart';
+import '../models/limit_rate.dart';
 
 import '../utils/validate_params.dart';
 import '../utils/is_blocked_value_in_params.dart';
 import '../utils/is_limit_rate_hit.dart';
-import '../utils/create_default_storage.dart';
 
 import '../errors/blocked_email_error.dart';
 import '../errors/limit_rate_error.dart';
@@ -26,9 +28,17 @@ Future<EmailJSResponseStatus> send(
 ]) async {
   final publicKey = options?.publicKey ?? store.publicKey;
   final privateKey = options?.privateKey ?? store.privateKey;
-  final storageProvider = options?.storageProvider ?? store.storageProvider ?? createDefaultStorage();
-  final blockList = { ...store.blockList, ...options?.blockList };
-  final limitRate = { ...store.limitRate, ...options?.limitRate };
+  final StorageProvider storageProvider = options?.storageProvider ?? store.storageProvider;
+
+  final BlockList blockList = BlockList(
+    list: options?.blockList?.list ?? store.blockList?.list,
+    watchVariable: options?.blockList?.watchVariable ?? store.blockList?.watchVariable,
+  );
+  
+  final LimitRate limitRate = LimitRate(
+    id: options?.limitRate?.id ?? store.limitRate?.id,
+    throttle: store.limitRate?.throttle ?? options?.limitRate?.throttle ?? 0,
+  );
 
   validateParams(publicKey, serviceID, templateID);
 
