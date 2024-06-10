@@ -10,5 +10,5 @@ void init(Options options) {
   store.blockList = options.blockList;
   store.limitRate = options.limitRate;
   store.storageProvider = options.storageProvider;
-  store.origin = options.origin ?? 'https://api.emailjs.com';
+  store.origin = options.origin;
 }
