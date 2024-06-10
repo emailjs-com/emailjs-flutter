@@ -1,3 +1,36 @@
-import '../models/options.dart';
+import '../models/default_storage.dart';
+import '../models/block_list.dart';
+import '../models/limit_rate.dart';
+import '../models/storage_provider.dart';
 
-final store = const Options();
+class Store {
+  String host;
+  String? publicKey;
+  String? privateKey;
+  BlockList? blockList;
+  LimitRate? limitRate;
+  StorageProvider? storeProvider;
+
+  set storageProvider(StorageProvider? provider) {
+    if (provider != null) {
+      storeProvider = provider;
+    }
+  }
+
+  StorageProvider get storageProvider {
+    storeProvider = storeProvider ?? DefaultStorage();
+    return storeProvider!;
+  }
+
+  set origin(String? host) {
+    if (host != null) {
+      origin = host;
+    }
+  }
+
+  Store({
+    this.host = 'api.emailjs.com',
+  });
+}
+
+final Store store = Store();
