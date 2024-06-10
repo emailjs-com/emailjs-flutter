@@ -59,5 +59,5 @@ Future<EmailJSResponseStatus> send(
     'template_params': templateParams,
   };
 
-  return sendPost('api/v1.0/email/send', json.encode(params));
+  return sendPost('api/v1.0/email/send', json.encode(params), store.client);
 }

@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 import '../models/default_storage.dart';
 import '../models/block_list.dart';
 import '../models/limit_rate.dart';
@@ -10,6 +12,7 @@ class Store {
   BlockList? blockList;
   LimitRate? limitRate;
   StorageProvider? storeProvider;
+  Client? client;
 
   set storageProvider(StorageProvider? provider) {
     if (provider != null) {

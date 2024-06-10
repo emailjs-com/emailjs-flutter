@@ -5,10 +5,12 @@ import '../models/emailjs_response_status.dart';
 /// sends JSON object via HTTPS POST
 Future<EmailJSResponseStatus> sendPost(
   String url,
-  String data
-) async {
-   
-  final client = Client();
+  String data,
+  [
+    Client? client,
+  ]) async {
+
+  client ??= Client();
 
   try {
     final response = await client.post(
