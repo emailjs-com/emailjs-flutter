@@ -1,4 +1,4 @@
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import '../store/store.dart';
 import '../models/emailjs_response_status.dart';
 
@@ -8,18 +8,18 @@ Future<EmailJSResponseStatus> sendPost(
   String data
 ) async {
    
-  final client = http.Client();
+  final client = Client();
 
   try {
     final response = await client.post(
-      Uri.https(store.origin, url),
+      Uri.https(store.host, url),
       headers: {
         'Content-Type': 'application/json',
       },
       body: data,
     );
     
-    final responseStatus = new EmailJSResponseStatus(
+    final responseStatus = EmailJSResponseStatus(
       status: response.statusCode,
       text: response.body,
     );
