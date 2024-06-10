@@ -1,10 +1,7 @@
-import 'package:meta/meta.dart';
-
 import 'block_list.dart';
 import 'limit_rate.dart';
 import 'storage_provider.dart';
 
-@immutable
 class Options {
   /// The public key is required to identify your account and is a required variable
   final String? publicKey;
