@@ -25,9 +25,9 @@ class Store {
     return storeProvider!;
   }
 
-  set origin(String? host) {
-    if (host != null) {
-      origin = host;
+  set origin(String? origin) {
+    if (origin != null) {
+      host = origin;
     }
   }
 
