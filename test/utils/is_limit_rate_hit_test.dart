@@ -6,7 +6,7 @@ import 'package:emailjs/emailjs.dart';
 import 'package:emailjs/src/utils/is_limit_rate_hit.dart';
 
 void main() {
-  setUp(() async {
+  setUp(() {
     final Map<String, Object> values = <String, Object>{};
     SharedPreferences.setMockInitialValues(values);
   });
