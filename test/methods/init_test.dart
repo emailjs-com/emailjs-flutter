@@ -27,10 +27,11 @@ void main() {
       limitRate: LimitRate(
         throttle: 10000,
       ),
+      origin: 'test.com',
     ));
 
 
-    final newStore = Store();
+    final newStore = Store(host: 'test.com');
     newStore.publicKey = 'C2JWGTestKeySomething';
     
     newStore.blockList = const BlockList(
