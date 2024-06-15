@@ -28,13 +28,15 @@ Future<EmailJSResponseStatus> send(
 ]) async {
   final publicKey = options?.publicKey ?? store.publicKey;
   final privateKey = options?.privateKey ?? store.privateKey;
-  final StorageProvider storageProvider = options?.storageProvider ?? store.storageProvider;
+  final StorageProvider storageProvider =
+      options?.storageProvider ?? store.storageProvider;
 
   final BlockList blockList = BlockList(
     list: options?.blockList?.list ?? store.blockList?.list,
-    watchVariable: options?.blockList?.watchVariable ?? store.blockList?.watchVariable,
+    watchVariable:
+        options?.blockList?.watchVariable ?? store.blockList?.watchVariable,
   );
-  
+
   final LimitRate limitRate = LimitRate(
     id: options?.limitRate?.id ?? store.limitRate?.id,
     throttle: store.limitRate?.throttle ?? options?.limitRate?.throttle ?? 0,
@@ -42,7 +44,8 @@ Future<EmailJSResponseStatus> send(
 
   validateParams(publicKey, serviceID, templateID);
 
-  if (templateParams != null && isBlockedValueInParams(blockList, templateParams)) {
+  if (templateParams != null &&
+      isBlockedValueInParams(blockList, templateParams)) {
     return Future.error(blockedEmailError());
   }
 

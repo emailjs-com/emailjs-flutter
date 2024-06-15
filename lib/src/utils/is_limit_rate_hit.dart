@@ -20,7 +20,7 @@ Future<bool> isLimitRateHit(
   }
 
   final id = options.id ?? 'default';
-  
+
   validateLimitRateParams(options.throttle!, id);
 
   final leftTime = await getLeftTime(id, options.throttle!, storage);

@@ -39,13 +39,12 @@ class _HomePageState extends State<HomePage> {
           'message': 'Hi',
         },
         const emailjs.Options(
-          publicKey: 'YOUR_PUBLIC_KEY',
-          privateKey: 'YOUR_PRIVATE_KEY',
-          limitRate: const emailjs.LimitRate(
-            id: 'app',
-            throttle: 10000,
-          )
-        ),
+            publicKey: 'YOUR_PUBLIC_KEY',
+            privateKey: 'YOUR_PRIVATE_KEY',
+            limitRate: const emailjs.LimitRate(
+              id: 'app',
+              throttle: 10000,
+            )),
       );
       print('SUCCESS!');
     } catch (error) {
