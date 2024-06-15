@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:emailjs/emailjs.dart';
+import 'package:emailjs/emailjs.dart' as emailjs;
 
 void main() {
   runApp(const App());
@@ -31,22 +31,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   void _sendEmail() async {
     try {
-      await EmailJS.send(
-        '<YOUR_SERVICE_ID>',
-        '<YOUR_TEMPLATE_ID>',
+      await emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
         {
-          'user_email': 'hi@example.com',
+          'to_email': 'hi@example.com',
           'message': 'Hi',
         },
-        const Options(
-          publicKey: '<YOUR_PUBLIC_KEY>',
-          privateKey: '<YOUR_PRIVATE_KEY>',
+        const emailjs.Options(
+          publicKey: 'YOUR_PUBLIC_KEY',
+          privateKey: 'YOUR_PRIVATE_KEY',
+          limitRate: const emailjs.LimitRate(
+            id: 'app',
+            throttle: 10000,
+          )
         ),
       );
       print('SUCCESS!');
     } catch (error) {
-      if (error is EmailJSResponseStatus) {
-        print('ERROR... ${error.status}: ${error.text}');
+      if (error is emailjs.EmailJSResponseStatus) {
+        print('ERROR... $error');
       }
       print(error.toString());
     }
